@@ -5,7 +5,7 @@ import uuid
 class Idea(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    # image = 
+    image = models.ImageField(null=True, blank=True, default="idea-default.jpg")
     idea_link = models.CharField(max_length=2000, null=True, blank=True)
     view_total = models.IntegerField(default=0, null=True, blank=True)
     like = models.IntegerField(default=0, null=True, blank=True)
