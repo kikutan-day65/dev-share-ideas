@@ -6,4 +6,23 @@
 
 <h1>Projects Page</h1>
 
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Created at</th>
+        <th>Views</th>
+        <th>Like</th>
+    </tr>
+
+    {% for idea in ideas %}
+    <tr>    
+        <td>{{ idea.title }}</td>
+        <td>{{ idea.created }}</td>
+        <td>{{ idea.view_total }}</td>
+        <td>{{ idea.like }}</td>
+        <td><a href="">Details</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock content %}
