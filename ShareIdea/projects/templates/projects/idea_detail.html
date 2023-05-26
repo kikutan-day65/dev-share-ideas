@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h1>{{ detail.title }}</h1>
+<p><a href="{{ detail.idea_link }}" target="_blank">{{ detail.idea_link }}</a></p>
+
+<h2>Description</h2>
+<p>{{ detail.description }}</p>
+<p>Total Views: {{ detail.view_total }}</p>
+<p>Likes: {{ detail.like }}</p>
+<p>Created at: {{ detail.created }}</p>
+
+{% endblock content %}
+    
