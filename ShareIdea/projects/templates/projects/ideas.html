@@ -4,25 +4,24 @@
 
 {% block content %}
 
-<h1>Ideas Page</h1>
-
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Created at</th>
-        <th>Views</th>
-        <th>Like</th>
-    </tr>
-
-    {% for idea in ideas %}
-    <tr>    
-        <td>{{ idea.title }}</td>
-        <td>{{ idea.created }}</td>
-        <td>{{ idea.view_total }}</td>
-        <td>{{ idea.like }}</td>
-        <td><a href="{% url 'idea-detail' idea.id %}">Details</a></td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container-fluid">
+    <div class="row">
+        {% for idea in ideas %}
+        <div class="col-3">
+            <div class="card" style="width: 18rem; margin: 20px;">
+                <img src="{{ idea.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ idea.title }}</h5>
+                    <p class="card-text">{{ idea.description | slice:"100"}}</p>
+                    <p>Likes: {{ idea.like }}</p>
+                    <p>Views: {{ idea.view_total }}</p>
+                    <p>Created at: {{ idea.created | date:"d M Y" }}</p>
+                    <a href="{% url 'idea-detail' idea.id %}" class="btn btn-primary">Detail</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock content %}
