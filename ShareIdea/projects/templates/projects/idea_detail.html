@@ -4,7 +4,8 @@
 {% block content %}
 
 <h1>{{ detail.title }}</h1>
-<p><a href="{{ detail.idea_link }}" target="_blank">{{ detail.idea_link }}</a></p>
+<p>Link: <a href="{{ detail.idea_link }}" target="_blank">{{ detail.idea_link }}</a></p>
+<img src="{{ detail.image.url }}" alt="">
 
 <h2>Description</h2>
 <p>{{ detail.description }}</p>
