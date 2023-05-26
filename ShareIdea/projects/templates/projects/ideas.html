@@ -20,7 +20,7 @@
         <td>{{ idea.created }}</td>
         <td>{{ idea.view_total }}</td>
         <td>{{ idea.like }}</td>
-        <td><a href="">Details</a></td>
+        <td><a href="{% url 'idea-detail' idea.id %}">Details</a></td>
     </tr>
     {% endfor %}
 </table>
