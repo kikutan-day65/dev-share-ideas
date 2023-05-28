@@ -15,7 +15,7 @@
                     <p class="card-text">{{ profile.headline | slice:"100"}}</p>
                     <p>Location: {{ profile.location }}</p>
                     <p>Joined: {{ profile.created | date:"d M Y" }}</p>
-                    <a href="#" class="btn btn-primary">Detail</a>
+                    <a href="{% url 'profile-detail' profile.id %}" class="btn btn-primary">Detail</a>
                 </div>
             </div>
         </div>
