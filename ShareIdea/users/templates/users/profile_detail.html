@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+<h1>{{ detail.name }}</h1>
+<img src="{{ detail.user_image.url }}" alt="">
+<p>Username: {{ detail.username }}</p>
+<p>{{ detail.headline }}</p>
+<p>{{ detail.email }}</p>
+<p>{{ detail.bio }}</p>
+<p>Location: {{ detail.location }}</p>
+<p>Git: <a href="{{ detail.git_link }}">{{ detail.git_link }}</a></p>
+<p>LinkedIn: <a href="{{ detail.linkedin_link }}">{{ detail.linkedin_link }}</a></p>
+<p>Twitter: <a href="{{ detail.twitter_link }}">{{ detail.twitter_link }}</a></p>
+<p>Joined: {{ detail.created | date:"d M Y"}}</p>
+    
+
+{% endblock content %}
+    
