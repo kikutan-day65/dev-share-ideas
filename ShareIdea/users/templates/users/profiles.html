@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        {% for profile in profiles %}
+        <div class="col-3">
+            <div class="card" style="width: 18rem; margin: 20px;">
+                <img src="{{ profile.user_image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile.name }}</h5>
+                    <p class="card-text">{{ profile.headline | slice:"100"}}</p>
+                    <p>Location: {{ profile.location }}</p>
+                    <p>Joined: {{ profile.created | date:"d M Y" }}</p>
+                    <a href="#" class="btn btn-primary">Detail</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
