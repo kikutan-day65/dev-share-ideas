@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Idea, Tags
+from .models import Idea, Tag
 
 admin.site.register(Idea)
-admin.site.register(Tags)
+admin.site.register(Tag)
