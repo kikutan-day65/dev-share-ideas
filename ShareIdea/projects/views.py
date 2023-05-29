@@ -59,3 +59,17 @@ def edit_idea(request, pk):
     }
 
     return render(request, 'projects/idea_form.html', context)
+
+
+def delete_idea(request, pk):
+    idea = Idea.objects.get(id=pk)
+
+    if request.method == 'POST':
+        idea.delete()
+        return redirect('ideas')
+
+    context = {
+        'deleteObj': idea
+    }    
+    
+    return render(request, 'delete_form.html', context)
