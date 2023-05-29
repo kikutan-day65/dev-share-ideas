@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from .forms import IdeaForm
 from .models import Idea
 
 def ideas(request):
@@ -20,3 +21,23 @@ def idea_detail(request, pk):
     }
 
     return render(request, 'projects/idea_detail.html', context)
+
+
+def add_idea(request):
+    profile = request.user.profile
+    form = IdeaForm()
+
+    if request.method == 'POST':
+        form = IdeaForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            idea = form.save(commit=False)
+            idea.owner = profile
+            idea.save()
+            return redirect('ideas')
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'projects/idea_form.html', context)
