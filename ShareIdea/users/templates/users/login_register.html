@@ -4,18 +4,33 @@
 
 {% block content %}
 
-<h1>User login page</h1>
 
-<form action="{% url 'login' %}" method="POST">
-    {% csrf_token %}
+{% if page == 'register' %}
 
-    <label for="">Username:</label>
-    <input type="text" name="username" placeholder="Enter your username">
+    <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
 
-    <label for="">Password:</label>
-    <input type="password" name="password" placeholder="••••••••">
+        {{ form.as_p }}
 
-    <input type="submit" value="Login">
-</form>
+        <input type="submit"  value="SignUp">
+            
+    </form>
+
+
+{% else %}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+
+        <label for="">Username:</label>
+        <input type="text" name="username" placeholder="Enter your username">
+
+        <label for="">Password:</label>
+        <input type="password" name="password" placeholder="••••••••">
+
+        <input type="submit" value="Login">
+    </form>
+
+    <p>You don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+{% endif %}
 
 {% endblock content %}
