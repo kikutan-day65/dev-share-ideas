@@ -11,8 +11,13 @@
 
 <img src="{{ detail.image.url }}" alt="">
 
-<h2>Description</h2>
+<h2>Description</h2>    
 <p>{{ detail.description }}</p>
+
+{% for tag in detail.tags.all %}
+<p><a href="">{{ tag }}</a></p>
+{% endfor %}
+
 <p>Total Views: {{ detail.view_total }}</p>
 <p>Likes: {{ detail.like }}</p>
 <p>Created at: {{ detail.created }}</p>
