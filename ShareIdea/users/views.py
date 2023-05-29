@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
 
@@ -35,6 +35,12 @@ def login_user(request):
             messages.error(request, 'Username OR password is incorrect')
 
     return render(request, 'users/login_register.html', context)
+
+
+def logout_user(request):
+    logout(request)
+    messages.info(request, 'You are logged out!')
+    return redirect('login')
 
 
 def profiles(request):
