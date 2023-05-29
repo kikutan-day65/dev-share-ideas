@@ -41,3 +41,21 @@ def add_idea(request):
     }
 
     return render(request, 'projects/idea_form.html', context)
+
+
+def edit_idea(request, pk):
+    idea = Idea.objects.get(id=pk)
+    form = IdeaForm(instance=idea)
+
+    if request.method == 'POST':
+        form = IdeaForm(request.POST, request.FILES, instance=idea)
+
+        if form.is_valid():
+            form.save()
+            return redirect('ideas')
+    
+    context = {
+        'form': form
+    }
+
+    return render(request, 'projects/idea_form.html', context)
