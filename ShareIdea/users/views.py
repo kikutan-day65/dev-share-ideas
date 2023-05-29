@@ -60,6 +60,9 @@ def register_user(request):
 
             login(request, user)
             return redirect('profiles')
+        
+        else:
+            messages.error(request, 'Ann error has occurred during registration')
 
     context = {
         'page': page,
