@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import Profile
+from .models import Profile, Skill
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -29,4 +29,13 @@ class ProfileForm(ModelForm):
             'headline', 'bio', 'location',
             'user_image', 'git_link', 'linkedin_link',
             'twitter_link'
+        ]
+
+
+class SkillForm(ModelForm):
+    class Meta:
+        model = Skill
+        fields = [
+            'name',
+            'description'
         ]
