@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+<h1>Login-user Account page</h1>
+
+<h1>{{ profile.name }}</h1>
+<img src="{{ profile.user_image.url }}" alt="">
+<p>Username: {{ profile.username }}</p>
+<p>{{ profile.headline }}</p>
+<p>{{ profile.email }}</p>
+<p>{{ profile.bio }}</p>
+<p>Location: {{ profile.location }}</p>
+<p>Git: <a href="{{ profile.git_link }}">{{ profile.git_link }}</a></p>
+<p>LinkedIn: <a href="{{ profile.linkedin_link }}">{{ profile.linkedin_link }}</a></p>
+<p>Twitter: <a href="{{ profile.twitter_link }}">{{ profile.twitter_link }}</a></p>
+<p>Joined: {{ profile.created | date:"d M Y"}}</p>
+
+<a href="#">Edit</a>
+
+{% endblock content %}
