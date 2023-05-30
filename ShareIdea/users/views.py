@@ -59,7 +59,7 @@ def register_user(request):
             messages.success(request, 'User account was created!')
 
             login(request, user)
-            return redirect('profiles')
+            return redirect('edit-account')
         
         else:
             messages.error(request, 'Ann error has occurred during registration')
