@@ -17,7 +17,11 @@
 <p>LinkedIn: <a href="{{ detail.linkedin_link }}">{{ detail.linkedin_link }}</a></p>
 <p>Twitter: <a href="{{ detail.twitter_link }}">{{ detail.twitter_link }}</a></p>
 <p>Joined: {{ detail.created | date:"d M Y"}}</p>
-    
+
+{% for skill in skills %}
+<p><a href="#">{{ skill.name }}</a></p>
+{% endfor %}
+
 
 {% endblock content %}
     

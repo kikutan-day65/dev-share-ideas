@@ -6,6 +6,8 @@
 
 <h1>Login-user Account page</h1>
 
+<a href="{% url 'edit-account' %}">Edit</a>
+
 <h1>{{ profile.name }}</h1>
 <img src="{{ profile.user_image.url }}" alt="">
 <p>Username: {{ profile.username }}</p>
@@ -18,6 +20,10 @@
 <p>Twitter: <a href="{{ profile.twitter_link }}">{{ profile.twitter_link }}</a></p>
 <p>Joined: {{ profile.created | date:"d M Y"}}</p>
 
-<a href="{% url 'edit-account' %}">Edit</a>
+
+{% for skill in skills %}
+<p><a href="#">{{ skill.name }}</a></p>
+{% endfor %}
+    
 
 {% endblock content %}
