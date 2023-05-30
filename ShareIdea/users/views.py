@@ -90,3 +90,13 @@ def profile_detail(request, pk):
     }
 
     return render(request, 'users/profile_detail.html', context)
+
+
+def user_account(request):
+    profile = request.user.profile
+
+    context = {
+        'profile': profile,
+    }
+
+    return render(request, 'users/account.html', context)
