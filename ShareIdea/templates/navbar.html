@@ -6,6 +6,7 @@
     <li><a href="">Message Box</a></li>
     
     {% if request.user.is_authenticated %}
+        <li><a href="{% url 'account' %}">Account</a></li>
         <li><a href="{% url 'add-idea' %}">Add Idea</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
     {% else %}
