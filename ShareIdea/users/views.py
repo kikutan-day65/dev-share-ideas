@@ -84,9 +84,11 @@ def profiles(request):
 
 def profile_detail(request, pk):
     detail = Profile.objects.get(id=pk)
+    skills = detail.skill_set.all()
 
     context = {
         'detail': detail,
+        'skills': skills,
     }
 
     return render(request, 'users/profile_detail.html', context)
@@ -94,9 +96,11 @@ def profile_detail(request, pk):
 
 def user_account(request):
     profile = request.user.profile
+    skills = profile.skill_set.all()
 
     context = {
         'profile': profile,
+        'skills': skills,
     }
 
     return render(request, 'users/account.html', context)
