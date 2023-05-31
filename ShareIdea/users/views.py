@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Profile
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm
+from .utils import search_profiles
 
 
 def login_user(request):
@@ -74,10 +75,11 @@ def register_user(request):
 
 
 def profiles(request):
-    profiles = Profile.objects.all()
+    profiles, search_query = search_profiles(request)
 
     context = {
         'profiles': profiles,
+        'search_query': search_query,
     }
 
     return render(request, 'users/profiles.html', context)
@@ -95,6 +97,7 @@ def profile_detail(request, pk):
     return render(request, 'users/profile_detail.html', context)
 
 
+@login_required(login_url='login')
 def user_account(request):
     profile = request.user.profile
     skills = profile.skill_set.all()
