@@ -3,12 +3,15 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import IdeaForm
 from .models import Idea
+from .utils import search_ideas
+
 
 def ideas(request):
-    ideas = Idea.objects.all()    
+    ideas, search_query = search_ideas(request) 
 
     context = {
         'ideas': ideas,
+        'search_query': search_query,
     }
 
     return render(request, 'projects/ideas.html', context)
