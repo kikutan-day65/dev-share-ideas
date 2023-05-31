@@ -24,6 +24,9 @@ class Idea(models.Model):
     def __str__(self):
         return self.title
     
+    class Meta:
+        ordering = ['-created']
+    
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
