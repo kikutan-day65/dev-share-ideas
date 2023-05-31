@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from .models import Profile
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm
@@ -106,6 +107,7 @@ def user_account(request):
     return render(request, 'users/account.html', context)
 
 
+@login_required(login_url='login')
 def edit_account(request):
     profile = request.user.profile
     form = ProfileForm(instance=profile)
@@ -125,6 +127,7 @@ def edit_account(request):
     return render(request, 'users/profile_form.html', context)
 
 
+@login_required(login_url='login')
 def add_skill(request):
     profile = request.user.profile
     form = SkillForm()

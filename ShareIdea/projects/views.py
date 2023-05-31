@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from .forms import IdeaForm
 from .models import Idea
@@ -23,6 +24,7 @@ def idea_detail(request, pk):
     return render(request, 'projects/idea_detail.html', context)
 
 
+@login_required(login_url='login')
 def add_idea(request):
     profile = request.user.profile
     form = IdeaForm()
@@ -43,6 +45,7 @@ def add_idea(request):
     return render(request, 'projects/idea_form.html', context)
 
 
+@login_required(login_url='login')
 def edit_idea(request, pk):
     idea = Idea.objects.get(id=pk)
     form = IdeaForm(instance=idea)
@@ -61,6 +64,7 @@ def edit_idea(request, pk):
     return render(request, 'projects/idea_form.html', context)
 
 
+@login_required(login_url='login')
 def delete_idea(request, pk):
     idea = Idea.objects.get(id=pk)
 
