@@ -16,16 +16,39 @@
 
 <img src="{{ detail.image.url }}" alt="">
 
-<h2>Description</h2>    
+<h3>Description</h3>
+<p>Owner: {{ detail.owner.name }}</p>   
 <p>{{ detail.description }}</p>
 
+<h3>Tags</h3>
 {% for tag in detail.tags.all %}
 <p><a href="">{{ tag }}</a></p>
 {% endfor %}
 
+<h3>Feedbacks</h3>
 <p>Total Views: {{ detail.view_total }}</p>
 <p>Likes: {{ detail.like }}</p>
+<p>Dislikes: {{ detail.dislike }}</p>
 <p>Created at: {{ detail.created }}</p>
+
+<h3>Reviews</h3>
+
+
+{% if request.user.profile.id in detail.reviewers %}
+    <p>You have already submitted your review for this idea</p>
+{% elif request.user.profile == detail.owner %}
+    <p>You cannot review your own idea</p>
+{% elif request.user.is_authenticated %}
+    <form action="{% url 'idea-detail' detail.id %}" method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="submit">        
+    </form>
+{% else %}
+    <p>You wanna leave your comment? Please <a href="{% url 'login' %}">Login</a></p>
+{% endif %}
 
 {% endblock content %}
     

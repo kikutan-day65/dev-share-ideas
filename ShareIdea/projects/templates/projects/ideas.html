@@ -14,8 +14,8 @@
 <div class="container-fluid">
     <div class="row">
         {% for idea in ideas %}
-        <div class="col-3">
-            <div class="card" style="width: 18rem; margin: 20px;">
+        <div class="col-4">
+            <div class="card" style="width: 500px; margin: 10px;">
                 <img src="{{ idea.image.url }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ idea.title }}</h5>
@@ -25,6 +25,7 @@
                     {% endfor %}
 
                     <p>Likes: {{ idea.like }}</p>
+                    <p>Dislikes: {{ idea.dislike }}</p>
                     <p>Views: {{ idea.view_total }}</p>
                     <p>Created at: {{ idea.created | date:"d M Y" }}</p>
                     <a href="{% url 'idea-detail' idea.id %}" class="btn btn-primary">Detail</a>
