@@ -5,10 +5,12 @@
 
 <h1>{{ detail.title }}</h1>
 
-<hr>
-<a href="{% url 'edit-idea' detail.id %}">Edit</a>
-<a href="{% url 'delete-idea' detail.id %}">Delete</a>
-<hr>
+{% if request.user.profile == detail.owner %}
+    <hr>
+    <a href="{% url 'edit-idea' detail.id %}">Edit</a>
+    <a href="{% url 'delete-idea' detail.id %}">Delete</a>
+    <hr>
+{% endif %}
 
 {% if detail.idea_link %}
     <p>Link: <a href="{{ detail.idea_link }}" target="_blank">{{ detail.idea_link }}</a></p>  
