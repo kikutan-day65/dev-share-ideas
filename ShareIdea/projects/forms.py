@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 
-from .models import Idea
+from .models import Idea, Review
 
 
 class IdeaForm(ModelForm):
@@ -17,4 +17,18 @@ class IdeaForm(ModelForm):
 
         widgets = {
             'tags': forms.CheckboxSelectMultiple()
+        }
+
+
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = [
+            'value',
+            'body'
+        ]
+
+        labels = {
+            'value': 'Like / Dislike',
+            'body': 'Add a comment with your vote'
         }
