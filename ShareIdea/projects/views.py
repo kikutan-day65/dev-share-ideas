@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .forms import IdeaForm, ReviewForm
+from .forms import IdeaForm, ReviewForm, TagForm
 from .models import Idea
 from .utils import search_ideas, paginate_ideas
 
@@ -99,4 +99,21 @@ def delete_idea(request, pk):
         'deleteObj': idea
     }    
     
-    return render(request, 'delete_form.html', context)
+    return render(request, 'delete_form.html', context)\
+
+
+@login_required(login_url='login')
+def create_tag(request):
+    form = TagForm()
+    
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        form.save()
+
+        return redirect('ideas')
+    
+    context = {
+        'form': form
+    }
+
+    return render(request, 'projects/tag_form.html', context)

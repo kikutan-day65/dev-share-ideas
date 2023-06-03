@@ -10,4 +10,6 @@ urlpatterns = [
     path('add-idea/', views.add_idea, name='add-idea'),
     path('edit-idea/<str:pk>/', views.edit_idea, name='edit-idea'),
     path('delete-idea/<str:pk>/', views.delete_idea, name='delete-idea'),
+
+    path('create-tag/', views.create_tag, name='create-tag'),
 ]
