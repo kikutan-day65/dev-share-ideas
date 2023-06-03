@@ -37,6 +37,11 @@ class Idea(models.Model):
         self.dislike = dislike_votes
 
         self.save()
+    
+    @property
+    def view_count(self):
+        self.view_total += 1
+        self.save()
 
     def __str__(self):
         return self.title
