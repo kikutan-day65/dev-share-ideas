@@ -4,15 +4,17 @@ from django.contrib import messages
 
 from .forms import IdeaForm, ReviewForm
 from .models import Idea
-from .utils import search_ideas
+from .utils import search_ideas, paginate_ideas
 
 
 def ideas(request):
-    ideas, search_query = search_ideas(request) 
+    ideas, search_query = search_ideas(request)
+    custom_range, ideas = paginate_ideas(request, ideas, 6)
 
     context = {
         'ideas': ideas,
         'search_query': search_query,
+        'custom_range': custom_range,
     }
 
     return render(request, 'projects/ideas.html', context)
