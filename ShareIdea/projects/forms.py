@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 
-from .models import Idea, Review
+from .models import Idea, Review, Tag
 
 
 class IdeaForm(ModelForm):
@@ -31,4 +31,16 @@ class ReviewForm(ModelForm):
         labels = {
             'value': 'Like / Dislike',
             'body': 'Add a comment with your vote'
+        }
+
+
+class TagForm(ModelForm):
+    class Meta:
+        model = Tag
+        fields = [
+            'name'
+        ]
+
+        label = {
+            'name': 'new tag'
         }
