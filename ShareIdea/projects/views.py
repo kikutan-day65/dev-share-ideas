@@ -34,7 +34,9 @@ def idea_detail(request, pk):
         messages.success(request, 'Your review was successfully submitted!')
 
         return redirect('idea-detail', pk=detail.id)
-        
+    
+    detail.view_count
+
     context = {
         'detail': detail,
         'form': form
