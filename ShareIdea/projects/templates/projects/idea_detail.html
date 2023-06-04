@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 
+{% load humanize %}
 
 {% block content %}
 
@@ -19,7 +20,7 @@
 <img src="{{ detail.image.url }}" alt="">
 
 <h3>Description</h3>
-<p>Owner: {{ detail.owner.name }}</p>   
+<p>Owner: <a href="{% url 'profile-detail' detail.owner.id %}">{{ detail.owner.name }}</a></p>   
 <p>{{ detail.description }}</p>
 
 <h3>Tags</h3>
@@ -28,10 +29,10 @@
 {% endfor %}
 
 <h3>Feedbacks</h3>
-<p>Total Views: {{ detail.view_total }}</p>
-<p>Likes: {{ detail.like }}</p>
-<p>Dislikes: {{ detail.dislike }}</p>
-<p>Created at: {{ detail.created }}</p>
+<p>Total Views: {{ detail.view_total | intcomma }}</p>
+<p>Likes: {{ detail.like | intcomma }}</p>
+<p>Dislikes: {{ detail.dislike | intcomma }}</p>
+<p>Created at: {{ detail.created | date:"d M Y" }}</p>
 
 <h3>Reviews</h3>
 

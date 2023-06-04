@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 
-
+{% load humanize %}
 
 {% block content %}
 
@@ -24,9 +24,9 @@
                     <p class="card-text"><a href="#">{{ tag }}</a></p> 
                     {% endfor %}
 
-                    <p>Likes: {{ idea.like }}</p>
-                    <p>Dislikes: {{ idea.dislike }}</p>
-                    <p>Views: {{ idea.view_total }}</p>
+                    <p>Likes: {{ idea.like | intcomma }}</p>
+                    <p>Dislikes: {{ idea.dislike | intcomma }}</p>
+                    <p>Views: {{ idea.view_total | intcomma }}</p>
                     <p>Created at: {{ idea.created | date:"d M Y" }}</p>
                     <a href="{% url 'idea-detail' idea.id %}" class="btn btn-primary">Detail</a>
                 </div>
