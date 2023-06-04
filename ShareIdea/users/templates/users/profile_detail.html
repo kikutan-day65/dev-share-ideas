@@ -19,9 +19,8 @@
 <p>Joined: {{ detail.created | date:"d M Y"}}</p>
 
 {% for skill in skills %}
-<p><a href="#">{{ skill.name }}</a></p>
+<p>{{ skill.name }} - {{ skill.description }}</p>
 {% endfor %}
-
 
 {% endblock content %}
     
