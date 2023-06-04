@@ -24,7 +24,7 @@
 <a href="{% url 'add-skill' %}">Add skill</a>
 
 {% for skill in skills %}
-<p>{{ skill.name }} : {{ skill.description }} - <a href="{% url 'delete-skill' skill.id %}">Delete skill</a></p>
+<p>{{ skill.name }} : {{ skill.description }} - <a href="{% url 'edit-skill' skill.id %}">Edit</a> - <a href="{% url 'delete-skill' skill.id %}">Delete</a></p>
 {% endfor %}
 
 {% endblock content %}
