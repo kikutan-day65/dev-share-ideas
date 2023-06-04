@@ -156,6 +156,28 @@ def add_skill(request):
 
 
 @login_required(login_url='login')
+def edit_skill(request, pk):
+    profile = request.user.profile
+    skill = profile.skill_set.get(id=pk)
+
+    form = SkillForm(instance=skill)
+
+    if request.method == 'POST':
+        form = SkillForm(request.POST, instance=skill)
+
+        if form.is_valid():
+            skill.save()
+            messages.success(request, 'Skill was successfully updated!')
+            return redirect('account')
+    
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'users/skill_form.html', context)
+
+
+@login_required(login_url='login')
 def delete_skill(request, pk):
     profile = request.user.profile
     skill = profile.skill_set.get(id=pk)
