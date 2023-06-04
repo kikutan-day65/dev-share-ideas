@@ -52,5 +52,14 @@
     <p>You wanna leave your comment? Please <a href="{% url 'login' %}">Login</a></p>
 {% endif %}
 
+{% for review in detail.review_set.all %}
+
+{% if review.body %}     
+    <p><a href="{% url 'profile-detail' review.owner.id %}">{{ review.owner }}</a> - {{ review.body | linebreaksbr }}</p>
+{% endif %}
+
+{% endfor %}
+    
+
 {% endblock content %}
     
