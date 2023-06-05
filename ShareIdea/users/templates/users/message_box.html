@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h3>Message Box</h3>
+
+
+{% for message in message_requests %}
+<p><a href="">{{ message.subject }}</a> - <a href="">{{ message.sender }}</a> - {{ message.is_read }}</p>
+{% endfor %}
+    
+
+{% endblock content %}
+    
