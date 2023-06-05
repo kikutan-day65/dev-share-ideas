@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<a href="#"> Send Message</a>
+<a href="{% url 'create-message' detail.id %}">Send Message</a>
 
 <h1>{{ detail.name }}</h1>
 <img src="{{ detail.user_image.url }}" alt="">
