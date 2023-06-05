@@ -192,3 +192,17 @@ def delete_skill(request, pk):
     }
 
     return render(request, 'delete_form.html', context)
+
+
+@login_required(login_url='login')
+def message_box(request):
+    profile = request.user.profile
+    message_requests = profile.messages.all()
+    unread_count = message_requests.filter(is_read=False).count()
+
+    context = {
+        'message_requests': message_requests,
+        'unread_count': unread_count
+    }
+
+    return render(request, 'users/message_box.html', context)
