@@ -3,9 +3,9 @@
 <ul>
     <li><a href="{% url 'ideas' %}">Ideas</a></li>
     <li><a href="{% url 'profiles' %}">Users</a></li>
-    <li><a href="">Message Box</a></li>
     
     {% if request.user.is_authenticated %}
+        <li><a href="{% url 'message-box' %}">Message Box</a></li>
         <li><a href="{% url 'account' %}">Account</a></li>
         <li><a href="{% url 'add-idea' %}">Add Idea</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
