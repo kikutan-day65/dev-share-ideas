@@ -7,7 +7,7 @@
 
 
 {% for message in message_requests %}
-<p><a href="">{{ message.subject }}</a> - <a href="">{{ message.sender }}</a> - {{ message.is_read }}</p>
+<p><a href="{% url 'message' message.id %}">{{ message.subject }}</a> - <a href="">{{ message.sender }}</a> - {{ message.is_read }}</p>
 {% endfor %}
     
 
