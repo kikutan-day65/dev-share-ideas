@@ -21,4 +21,5 @@ urlpatterns = [
 
     path('message-box/', views.message_box, name='message-box'),
     path('message/<str:pk>/', views.view_message, name='message'),
+    path('create-message/<str:pk>/', views.create_message, name='create-message'),
 ]
