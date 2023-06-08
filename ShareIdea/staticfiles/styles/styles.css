@@ -1,0 +1,14 @@
+ul {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    display: inline;
+    font-size: 20px;
+    padding: 3px;
+}
+
+td {
+    padding: 5px;
+}
