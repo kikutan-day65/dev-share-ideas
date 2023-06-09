@@ -64,12 +64,12 @@ body a {
     margin-bottom: 4px;  /* タグの下マージン */
 }
 
-.tag-btn {
+.pill {
     font-size: 13px;
     background-color: #321e3a;
     border: none;
     color: #F4F5F7;
-    padding: 1px auto;
+    padding: 1px 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -88,4 +88,17 @@ body a {
     text-align: right;
     font-weight: bold;
     color: darkcyan;
+ }
+
+
+ /* Users page styling */
+ .user-info span {
+    font-weight: bold;
+ }
+
+ .headline {
+    font-style: italic;
+    color: darkcyan;
+    text-align: center;
+    font-weight: bold;
  }
