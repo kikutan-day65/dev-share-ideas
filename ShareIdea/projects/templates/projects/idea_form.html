@@ -10,9 +10,12 @@
     {% csrf_token %}
 
     {{ form.as_p }}
+
+    <textarea name="new_tags" placeholder="Add new tags"></textarea>
+
     <input type="submit" value="Submit">
 </form>
 
-<p><a href="{% url 'create-tag' %}">Add new tag</a></p>
+<!-- <p><a href="{% url 'create-tag' %}">Add new tag</a></p> -->
 
 {% endblock content %}
