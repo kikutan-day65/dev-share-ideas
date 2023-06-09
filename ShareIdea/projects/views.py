@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .forms import IdeaForm, ReviewForm, TagForm
-from .models import Idea
+from .models import Idea, Tag
 from .utils import search_ideas, paginate_ideas
 
 
@@ -54,11 +54,17 @@ def add_idea(request):
 
     if request.method == 'POST':
         form = IdeaForm(request.POST, request.FILES)
+        new_tags = request.POST.get('new_tags').replace(',', ' ').split()
 
         if form.is_valid():
             idea = form.save(commit=False)
             idea.owner = profile
             idea.save()
+
+            for tag in new_tags:
+                tag, created = Tag.objects.get_or_create(name=tag)
+                idea.tags.add(tag)
+
             return redirect('ideas')
 
     context = {
@@ -70,14 +76,21 @@ def add_idea(request):
 
 @login_required(login_url='login')
 def edit_idea(request, pk):
+    profile = request.user.profile
     idea = Idea.objects.get(id=pk)
     form = IdeaForm(instance=idea)
 
     if request.method == 'POST':
         form = IdeaForm(request.POST, request.FILES, instance=idea)
+        new_tags = request.POST.get('new_tags').replace(',', ' ').split()
 
         if form.is_valid():
             form.save()
+
+            for tag in new_tags:
+                tag, created = Tag.objects.get_or_create(name=tag)
+                idea.tags.add(tag)
+
             return redirect('ideas')
     
     context = {
