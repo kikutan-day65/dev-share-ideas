@@ -3,6 +3,7 @@ body {
 }
 
 
+/* Navbar styling */
 .navbar {
     font-size: 23px;
     background-color: #321e3a;
@@ -34,3 +35,14 @@ body {
     color: #F4F5F7;  /* ドロップダウン内の文字色を設定 */
     text-align: center;
 }
+
+
+/* Search form */
+.search-form .btn {
+    color: #F4F5F7 !important;
+    background-color: #321e3a !important;
+    height: 47px;
+}
+
+
+/* Ideas page styling */
