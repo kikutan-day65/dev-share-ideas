@@ -30,6 +30,10 @@
                         <a href="{% url 'idea-detail' idea.id %}"><strong>{{ idea.title }}</strong></a>
                     </h4>
                     
+                    <div class="author-name">
+                        By <em><a href="{% url 'profile-detail' idea.owner.id %}">{{ idea.owner.name }}</a></em>
+                    </div>
+                    
                     {% for tag in idea.tags.all  %}
                     <div class="tag-list">
                         <button class="tag-btn">{{ tag }}</button>

@@ -83,3 +83,9 @@ body a {
  .date span {
     font-weight: bold;
  }
+
+ .author-name {
+    text-align: right;
+    font-weight: bold;
+    color: darkcyan;
+ }
