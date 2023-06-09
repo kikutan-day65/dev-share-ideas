@@ -5,9 +5,11 @@ body {
 
 /* Navbar styling */
 .navbar {
-    font-size: 23px;
+    font-size: 20px;
     background-color: #321e3a;
-    height: 95px;
+    height: 80px;
+    position: relative;
+    z-index: 1000;
 }
 
 .nav-link {
@@ -39,8 +41,8 @@ body {
 
 /* Search form */
 .search-form .btn {
-    color: #F4F5F7 !important;
-    background-color: #321e3a !important;
+    color: #F4F5F7;
+    background-color: #321e3a;
     height: 47px;
 }
 
