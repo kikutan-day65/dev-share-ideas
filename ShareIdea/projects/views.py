@@ -9,7 +9,7 @@ from .utils import search_ideas, paginate_ideas
 
 def ideas(request):
     ideas, search_query = search_ideas(request)
-    custom_range, ideas = paginate_ideas(request, ideas, 6)
+    custom_range, ideas = paginate_ideas(request, ideas, 8)
 
     context = {
         'ideas': ideas,
