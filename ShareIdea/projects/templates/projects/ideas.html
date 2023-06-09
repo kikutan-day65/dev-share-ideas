@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 
 {% load humanize %}
+{% load static %}
 
 {% block content %}
 
@@ -17,29 +18,40 @@
 
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
         {% for idea in ideas %}
-        <div class="col-4">
-            <div class="card" style="width: 450px; margin: 10px;">
-                <img src="{{ idea.image.url }}" class="card-img-top" alt="...">
+        <div class="col mb-4">
+            <div class="card" style="max-width: 100%;">
+                <a href="{% url 'idea-detail' idea.id %}">
+                    <img src="{{ idea.image.url }}" class="card-img-top" alt="idea image">
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title">{{ idea.title }}</h5>
+                    <h4 class="card-title">
+                        <a href="{% url 'idea-detail' idea.id %}"><strong>{{ idea.title }}</strong></a>
+                    </h4>
                     
                     {% for tag in idea.tags.all  %}
-                    <p class="card-text"><a href="#">{{ tag }}</a></p> 
+                    <div class="tag-list">
+                        <button class="tag-btn">{{ tag }}</button>
+                    </div> 
                     {% endfor %}
 
-                    <p>Likes: {{ idea.like | intcomma }}</p>
-                    <p>Dislikes: {{ idea.dislike | intcomma }}</p>
-                    <p>Views: {{ idea.view_total | intcomma }}</p>
-                    <p>Created at: {{ idea.created | date:"d M Y" }}</p>
-                    <a href="{% url 'idea-detail' idea.id %}" class="btn btn-primary">Detail</a>
+                    <div class="user-favs">
+                        <span>Likes:</span> {{ idea.like | intcomma }} <br>
+                        <span>Dislikes:</span> {{ idea.dislike | intcomma }} <br>
+                        <span>Views:</span> {{ idea.view_total | intcomma }}
+                    </div>
+                    <div class="date">
+                        <span>Created at:</span> {{ idea.created | date:"d M Y" }}
+                    </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+
+
 
 {% include 'pagination.html' with queryset=ideas custom_range=custom_range %}
 

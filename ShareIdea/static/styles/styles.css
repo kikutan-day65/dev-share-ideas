@@ -2,6 +2,11 @@ body {
     background-color: F4F5F7 !important;
 }
 
+body a {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 /* Navbar styling */
 .navbar {
@@ -48,3 +53,33 @@ body {
 
 
 /* Ideas page styling */
+
+.card-title {
+    text-align: center;
+}
+
+.tag-list {
+    display: inline-block;  /* タグを横に並べる */
+    margin-right: 4px;  /* タグ間のスペース */
+    margin-bottom: 4px;  /* タグの下マージン */
+}
+
+.tag-btn {
+    font-size: 13px;
+    background-color: #321e3a;
+    border: none;
+    color: #F4F5F7;
+    padding: 1px auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 100px;
+  }
+
+.user-favs span {
+    font-weight: bold;
+ }
+
+ .date span {
+    font-weight: bold;
+ }
