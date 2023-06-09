@@ -4,24 +4,53 @@
 
 {% block content %}
 
-<form action="{% url 'profiles' %}" method="GET">
-    <h2>Search interesting Users!</h2>
-    <label for="">Search: </label>
-    <input type="text" name="search_query" value="{{ search_query }}" placeholder="Search by any keywords...">
-</form>
+<div class="search-form d-flex justify-content-center my-4">
+    <form action="{% url 'profiles' %}" method="GET" class="row g-2 align-items-center">
+        <div class="col-lg-11 col-sm-9">
+            <input class="form-control form-control-lg" type="text" name="search_query" value="{{ search_query }}" placeholder="Search users by any keywords...">
+        </div>
+        <div class="col-lg-1 col-sm-3">
+            <input type="submit" value="Search" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
         {% for profile in profiles %}
-        <div class="col-4">
-            <div class="card" style="width: 450px; margin: 10px;">
-                <img src="{{ profile.user_image.url }}" class="card-img-top" alt="...">
+        <div class="col mb-4">
+            <div class="card" style="max-width: 100%;">
+                <a href="{% url 'profile-detail' profile.id %}">
+                    <img src="{{ profile.user_image.url }}" class="card-img-top" alt="user image">
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title">{{ profile.name }}</h5>
-                    <p class="card-text">{{ profile.headline | slice:"100"}}</p>
-                    <p>Location: {{ profile.location }}</p>
-                    <p>Joined: {{ profile.created | date:"d M Y" }}</p>
-                    <a href="{% url 'profile-detail' profile.id %}" class="btn btn-primary">Detail</a>
+                    <h4 class="card-title">
+                        <a href="{% url 'profile-detail' profile.id %}"><strong>{{ profile.name }}</strong></a>
+                    </h4>
+
+                    <div class="headline">
+                        {{ profile.headline | slice:"100"}}
+                    </div>
+
+                    {% for skill in profile.skill_set.all %}
+                    <div class="pill">
+                        {{ skill.name }}
+                    </div>
+                    {% endfor %}
+
+                    <div class="username">
+                        <strong>Username:</strong> <em><a href="{% url 'profile-detail' profile.id %}">{{ profile.username }}</a></em>
+                    </div>
+
+                    <div class="user-info">
+                        <span>Location:</span> {{ profile.location }}<br>
+                        <span>Joined:</span> {{ profile.created | date:"d M Y" }}<br>
+                        
+                        <div class="date">
+                            <span>Joined on:</span> {{ profile.created | date:"d M Y" }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
