@@ -1,14 +1,36 @@
-ul {
+body {
+    background-color: F4F5F7 !important;
+}
+
+
+.navbar {
+    font-size: 23px;
+    background-color: #321e3a;
+    height: 95px;
+}
+
+.nav-link {
+    margin-right: 5px;
+}
+
+.navbar-nav li.nav-item a.nav-link {
+    color: #F4F5F7;
+}
+
+.navbar-nav .nav-link:hover {
+    color:  #fff !important;
+    opacity: 0.7;
+}
+
+.navbar-toggler {
+    background-color: #F4F5F7 !important;
+}
+
+.navbar-collapse.collapse.show .navbar-nav {
+    background-color: #321e3a;  /* ドロップダウンの背景色を設定 */
+}
+
+.navbar-collapse.collapse.show .navbar-nav .nav-link {
+    color: #F4F5F7;  /* ドロップダウン内の文字色を設定 */
     text-align: center;
-}
-
-li {
-    list-style: none;
-    display: inline;
-    font-size: 20px;
-    padding: 3px;
-}
-
-td {
-    padding: 5px;
 }
