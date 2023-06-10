@@ -1,30 +1,118 @@
 {% extends 'main.html' %}
 
-
+{% load static %}
 
 {% block content %}
 
-<h1>Login-user Account page</h1>
+<section class="custom-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="card card-style1 border-0">
+                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <img src="{{ profile.user_image.url }}" alt="..." width="100%" height="auto">
+                            </div>
+                            <div class="col-lg-6 px-xl-10">
+                                <div class="bg-custom d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                    <h3 class="h2 mb-0">{{ profile.name }}</h3>
+                                </div>
+                                <ul class="list-unstyled mb-1-9">
+                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-400">Username:</span> {{ profile.username }}</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-400">Headline:</span> {{ profile.headline }}</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-400">Email:</span> {{ profile.email }}</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-400">Location:</span> {{ profile.location }}</li>
+                                    <li class="display-28"><span class="display-26 me-2 font-weight-400">Joined:</span> {{ profile.created | date:"d M Y"}}</li>
+                                </ul>
+                                <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+                                    <li><a href="{{ profile.git_link }}"><img src="{% static 'images/profiles/git.png' %}" alt="git" width="30px" height="30px"></a></li>
+                                    <li><a href="{{ profile.linkedin_link }}"><img src="{% static 'images/profiles/linkedin.png' %}" alt="linkedin" width="30px" height="30px"></a></li>
+                                    <li><a href="{{ profile.twitter_link }}"><img src="{% static 'images/profiles/twitter.png' %}" alt="twitter" width="30px" height="30px"></a></li>
+                                </ul>
+                                <button type="button" class="btn btn-outline-primary">
+                                    <a href="{% url 'edit-account' %}">Edit Profile</a>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mb-4 mb-sm-5">
+                            <div>
+                                <span class="section-title mb-3 mb-sm-4">About Me</span>
+                                <p>{{ profile.bio | linebreaksbr }}</p>
+                            </div>
+                        </div>
+            
+                        <div class="table-responsive">
+                            <span class="section-title mb-3 mb-sm-4">Skills</span>
+                            <button type="button" class="btn btn-outline-primary btn-sm">
+                                <a href="{% url 'add-skill' %}">Add skill</a>
+                            </button>
+                            <table class="table align-middle">
+                                <tbody>
+                                    {% for skill in skills %}
+                                    <tr class="align-cneter">
+                                        <td class="skill-name">
+                                            {{ skill.name }}
+                                        </td>
+                                        <td class="skill-description">
+                                            {{ skill.description }}
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-primary btn-sm">
+                                                <a href="{% url 'edit-skill' skill.id %}">Edit</a>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm">
+                                                <a href="{% url 'delete-skill' skill.id %}">Delete</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+            
+                        <div class="table-responsive">
+                            <span class="section-title mb-3 mb-sm-4">Ideas</span>
+                            <table>
+                                <tbody>
+                                    {% for idea in profile.idea_set.all %}
+                                    <tr class="idea-row">
+                                        <td class="idea-image">
+                                            <a href="{% url 'idea-detail' idea.id %}"><img src="{{ idea.image.url }}" alt="" width="200px" height="auto"></a>
+                                        </td>
+                                        <td class="idea-title">
+                                            <a href="{% url 'idea-detail' idea.id %}">{{ idea.title }}</a>
+                                        </td>
+                                        
+                                        
+                                        {% if idea.description %}
+                                        <td class="idea-description">
+                                            {{ idea.description }}
+                                        </td>
+                                        {% else %}
+                                        <td>
+                                            
+                                        </td>
+                                        {% endif %}
+                                        <td>
+                                            <button type="button" class="btn btn-outline-primary btn-sm">
+                                                <a href="{% url 'edit-idea' idea.id %}">Edit</a>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm">
+                                                <a href="{% url 'delete-idea' idea.id %}">Delete</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
 
-<a href="{% url 'edit-account' %}">Edit</a>
-
-<h3>{{ profile.name }}</h3>
-<img src="{{ profile.user_image.url }}" alt="">
-<p>Username: {{ profile.username }}</p>
-<p>{{ profile.headline }}</p>
-<p>{{ profile.email }}</p>
-<p>{{ profile.bio }}</p>
-<p>Location: {{ profile.location }}</p>
-<p>Git: <a href="{{ profile.git_link }}">{{ profile.git_link }}</a></p>
-<p>LinkedIn: <a href="{{ profile.linkedin_link }}">{{ profile.linkedin_link }}</a></p>
-<p>Twitter: <a href="{{ profile.twitter_link }}">{{ profile.twitter_link }}</a></p>
-<p>Joined: {{ profile.created | date:"d M Y"}}</p>
-
-<h3>Skills</h3>
-<a href="{% url 'add-skill' %}">Add skill</a>
-
-{% for skill in skills %}
-<p>{{ skill.name }} : {{ skill.description }} - <a href="{% url 'edit-skill' skill.id %}">Edit</a> - <a href="{% url 'delete-skill' skill.id %}">Delete</a></p>
-{% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}
