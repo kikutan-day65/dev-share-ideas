@@ -60,16 +60,33 @@
                             </table>
                         </div>
             
-                        <!--  render projects here -->
-                        <div class="col-lg-12">
-                            <div class="row">
-                                    <div>
-                                        <span class="section-title mb-3 mb-sm-4">Projects</span>
-                                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                                        <p class="mb-1-9">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="table-responsive">
+                            <span class="section-title mb-3 mb-sm-4">Ideas</span>
+                            <table>
+                                <tbody>
+                                    {% for idea in detail.idea_set.all %}
+                                    <tr class="idea-row">
+                                        <td class="idea-image">
+                                            <a href="{% url 'idea-detail' idea.id %}"><img src="{{ idea.image.url }}" alt="" width="200px" height="auto"></a>
+                                        </td>
+                                        <td class="idea-title">
+                                            <a href="{% url 'idea-detail' idea.id %}">{{ idea.title }}</a>
+                                        </td>
+                                        
+                                        
+                                        {% if idea.description %}
+                                        <td class="idea-description">
+                                            {{ idea.description }}
+                                        </td>
+                                        {% else %}
+                                        <td>
+                                            
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
 
                     </div>
