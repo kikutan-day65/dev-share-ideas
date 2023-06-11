@@ -234,3 +234,53 @@ section {
 .rounded {
     border-radius: 0.25rem!important;
 }
+
+
+/* idea detail page */
+.idea-detail h3 {
+    color: #321e3a;
+}
+
+.idea-detail img {
+    max-width: 100%;
+    height: auto;
+  }
+
+.container {
+    margin-top: 30px;
+}
+
+.detail-contents h3 {
+    color: #321e3a;
+}
+
+.review {
+    margin-bottom: 10px;
+}
+
+.review-owner {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.review-body {
+    margin-bottom: 0;
+    padding-left: 30px;
+}
+
+.caution {
+    font-weight: bold;
+    color: silver;
+}
+
+.tag-list {
+    margin-bottom: 5px; /* タグの下部のマージンを調整 */
+}
+
+.fav-info {
+    margin-top: 20px; /* fav-infoの上部のマージンを調整 */
+}
+
+.idea-link {
+    margin-top: 20px;
+}
