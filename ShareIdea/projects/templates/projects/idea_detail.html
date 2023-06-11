@@ -4,63 +4,85 @@
 
 {% block content %}
 
-<h1>{{ detail.title }}</h1>
+<div class="container detail-contents">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Tags</h3>
+            {% for tag in detail.tags.all %}
+            <div class="tag-list">
+                <div class="pill">{{ tag }}</div>
+            </div>
+            {% endfor %}
+            <br>
+            {% if detail.idea_link %}
+            <button type="button" class="btn btn-outline-secondary idea-link">
+                <a class="idea-link" href="{{ detail.idea_link }}">Source Link</a>
+            </button>
+            {% endif %}
+            <br>
+            <div class="fav-info">
+                Likes {{ detail.like | intcomma }}
+                Dislikes: {{ detail.dislike | intcomma }}
+                Views: {{ detail.view_total | intcomma }}
+            </div>
+        </div>
+        <div class="col-md-6 idea-detail">
+            <img src="{{ detail.image.url }}" alt="idea-image">
+            <h2>{{ detail.title }}</h2>
+            <div class="owner-name">
+                By <a href="{% url 'profile-detail' detail.owner.id %}">{{ detail.owner.name }}</a>
+            </div>
+            <br>
+            <h3 class="singleProject__subtitle">About the idea</h3>
+            <div class="idea description">
+                {{ detail.description| linebreaksbr }}
+            </div>
+            <br>
+            <div class="feedbacks">
+                <h3>Feedback</h3>
 
-{% if request.user.profile == detail.owner %}
-    <hr>
-    <a href="{% url 'edit-idea' detail.id %}">Edit</a>
-    <a href="{% url 'delete-idea' detail.id %}">Delete</a>
-    <hr>
-{% endif %}
+                <!-- review submission form -->
+                {% if request.user.profile.id in detail.reviewers %}
+                <p class="caution">You have already submitted your review for this idea</p>
+                {% elif request.user.profile == detail.owner %}
+                <p class="caution">You cannot review your own idea</p>
+                {% elif request.user.is_authenticated %}
+                <form action="{% url 'idea-detail' detail.id %}" method="POST">
+                    {% csrf_token %}
 
-{% if detail.idea_link %}
-    <p>Link: <a href="{{ detail.idea_link }}" target="_blank">{{ detail.idea_link }}</a></p>  
-{% endif %}
+                    <select class="form-select form-select-lg mb-3" name="value" aria-label=".form-select-lg example">
+                        {% for choice in form.value %}
+                        {{ choice }}
+                        {% endfor %}
+                    </select>
 
-<img src="{{ detail.image.url }}" alt="">
+                    <div class="form-floating">
+                        <textarea class="form-control" name="body" placeholder="Leave a comment here"
+                            id="floatingTextarea2" style="height: 100px"></textarea>
+                    </div>
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </form>
+                {% else %}
+                <p class="caution">You want to leave your comment? Please <a href="{% url 'login' %}">Login</a></p>
+                {% endif %}
 
-<h3>Description</h3>
-<p>Owner: <a href="{% url 'profile-detail' detail.owner.id %}">{{ detail.owner.name }}</a></p>   
-<p>{{ detail.description }}</p>
+                <!-- show all reviews with comments -->
+                {% for review in detail.review_set.all %}
+                {% if review.body %}
+                    <div class="review">
+                        <p class="review-owner">
+                            <a href="{% url 'profile-detail' review.owner.id %}">{{ review.owner }}</a>
+                        </p>
+                        <p class="review-body">{{ review.body | linebreaksbr }}</p>
+                        <hr>
+                    </div>
+                {% endif %}
+                {% endfor %}
 
-<h3>Tags</h3>
-{% for tag in detail.tags.all %}
-<p><a href="">{{ tag }}</a></p>
-{% endfor %}
-
-<h3>Feedbacks</h3>
-<p>Total Views: {{ detail.view_total | intcomma }}</p>
-<p>Likes: {{ detail.like | intcomma }}</p>
-<p>Dislikes: {{ detail.dislike | intcomma }}</p>
-<p>Created at: {{ detail.created | date:"d M Y" }}</p>
-
-<h3>Reviews</h3>
-
-
-{% if request.user.profile.id in detail.reviewers %}
-    <p>You have already submitted your review for this idea</p>
-{% elif request.user.profile == detail.owner %}
-    <p>You cannot review your own idea</p>
-{% elif request.user.is_authenticated %}
-    <form action="{% url 'idea-detail' detail.id %}" method="POST">
-        {% csrf_token %}
-
-        {{ form.as_p }}
-
-        <input type="submit" value="submit">        
-    </form>
-{% else %}
-    <p>You wanna leave your comment? Please <a href="{% url 'login' %}">Login</a></p>
-{% endif %}
-
-{% for review in detail.review_set.all %}
-
-{% if review.body %}     
-    <p><a href="{% url 'profile-detail' review.owner.id %}">{{ review.owner }}</a> - {{ review.body | linebreaksbr }}</p>
-{% endif %}
-
-{% endfor %}
-    
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
-    
