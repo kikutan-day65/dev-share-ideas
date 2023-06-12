@@ -3,13 +3,26 @@
 
 {% block content %}
 
-<h3>Message Box</h3>
+<main class="message-container">
+    <div class="message-box">
+        <h3>New Messages(<span>{{ unread_count }}</span>)</h3>
+        <ul>
+            {% for message in message_requests %}
 
-
-{% for message in message_requests %}
-<p><a href="{% url 'message' message.id %}">{{ message.subject }}</a> - <a href="">{{ message.sender }}</a> - {{ message.is_read }}</p>
-{% endfor %}
-    
+            {% if message.is_read == False %}
+            <li class="unread-message">
+            {% else %}
+            <li>
+            {% endif %}
+                <a href="{% url 'message' message.id %}">
+                    <span class="message__author">From: {{ message.sender }}</span>
+                    <span class="message__subject">{{ message.subject | slice:"100" }}</span>
+                    <span class="message__date">{{ message.created }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
 
 {% endblock content %}
-    
