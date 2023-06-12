@@ -3,11 +3,17 @@
 
 {% block content %}
 
-{{ message.sender }}
-<br>
-{{ message.subject }}
-<br>
-{{ message.body }}
+<main class="messagePage">
+    <div class="content-box">
+        <div class="message">
+            <h2 class="message__subject">{{ message.subject }}</h4>
+                <a href="{% url 'profile-detail' message.sender.id %}" class="message__author">{{ message.sender }}</a>
+                <p class="message__date">{{ message.created }}</p>
+                <div class="message__body">
+                    {{ message.body | linebreaksbr }}
+                </div>
+        </div>
+    </div>
+</main>
 
 {% endblock content %}
-    
