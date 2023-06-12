@@ -284,3 +284,68 @@ section {
 .idea-link {
     margin-top: 20px;
 }
+
+
+/* Message box styling */
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    padding: 20px;
+}
+
+.message-box {
+    width: 80%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.message-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.message-box li {
+    margin-bottom: 10px;
+}
+
+.message-box a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.message-box a:hover {
+    background-color: #eaf0ff;
+}
+
+.message-box .message__author {
+    font-style: italic;
+}
+
+.message-box .message__subject {
+    display: block;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.message-box .message__date {
+    color: #999;
+    font-size: 12px;
+}
+
+.unread-message {
+    font-weight: bold;
+}
