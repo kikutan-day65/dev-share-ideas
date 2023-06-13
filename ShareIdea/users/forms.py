@@ -19,6 +19,12 @@ class CustomUserCreationForm(UserCreationForm):
         labels = {
             'first_name': 'Name',
         }
+    
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'form-control mb-3'})
 
 
 class ProfileForm(ModelForm):
@@ -31,6 +37,12 @@ class ProfileForm(ModelForm):
             'twitter_link'
         ]
 
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'form-control mb-3'})
+
 
 class SkillForm(ModelForm):
     class Meta:
@@ -39,6 +51,12 @@ class SkillForm(ModelForm):
             'name',
             'description'
         ]
+
+    def __init__(self, *args, **kwargs):
+        super(SkillForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'form-control mb-3'})
 
 
 class MessageForm(ModelForm):
@@ -50,3 +68,9 @@ class MessageForm(ModelForm):
             'subject',
             'body'
         ]
+    
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'form-control mb-3'})
