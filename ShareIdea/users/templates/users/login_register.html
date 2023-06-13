@@ -9,28 +9,28 @@
 
 <div class="container-lg mt-4">
     <div class="row d-flex justify-content-center">
-        <div class="col-lg-5 border border-3 rounded px-5 py-5 bg-light">
+        <div class="col-lg-7 border border-3 rounded px-5 py-5 bg-light">
             <form action="{% url 'register' %}" method="POST">
                 {% csrf_token %}
 
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Name:</label>
-                    <input class="form-control" name="first_name" type="text" aria-label="default input example">
+                    <input class="form-control mb-3" name="first_name" type="text" aria-label="default input example">
 
                     <label for="exampleInputEmail1" class="form-label">Username:</label>
-                    <input class="form-control" name="username" type="text" aria-label="default input example">
+                    <input class="form-control mb-3" name="username" type="text" aria-label="default input example">
 
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1">
+                    <input type="email" name="email" class="form-control mb-3" id="exampleFormControlInput1">
 
                     <label for="exampleInputPassword1" class="form-label">Password:</label>
-                    <input type="password" name="password1" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="password1" class="form-control mb-3" id="exampleInputPassword1">
 
                     <label for="exampleInputPassword1" class="form-label">Password confirmation:</label>
-                    <input type="password" name="password2" class="form-control" id="exampleInputPassword1">
-                </div> 
+                    <input type="password" name="password2" class="form-control mb-3" id="exampleInputPassword1">
+                </div>
 
-                <button type="submit" class="btn btn-primary mb-3">Sign Up</button>   
+                <button type="submit" class="btn btn-primary mb-3">Sign Up</button>
             </form>
         </div>
     </div>
