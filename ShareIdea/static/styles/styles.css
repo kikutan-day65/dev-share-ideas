@@ -395,3 +395,23 @@ section {
 .message__body {
     margin-top: 10px;
 }
+
+
+/* login form */
+.signup-style {
+    font-weight: bold;
+    color: #321e3a;
+}
+
+.signup-style a:hover {
+    opacity: 0.7;
+}
+
+.reset-pass {
+    text-decoration: underline;
+    color: #321e3a;
+}
+
+.reset-pass:hover {
+    opacity: 0.7;
+}
