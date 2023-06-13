@@ -7,32 +7,46 @@
 
 {% if page == 'register' %}
 
-    <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+<form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
 
-        {{ form.as_p }}
+    {{ form.as_p }}
 
-        <input type="submit"  value="SignUp">
-            
-    </form>
+    <input type="submit" value="SignUp">
+
+</form>
 
 
 {% else %}
-    <form action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
 
-        <label for="">Username:</label>
-        <input type="text" name="username" placeholder="Enter your username">
+<div class="container-lg mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-5 border border-3 rounded px-5 py-5 bg-light">
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
 
-        <label for="">Password:</label>
-        <input type="password" name="password" placeholder="••••••••">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username:</label>
+                    <input type="text" name="username" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password:</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                </div>
 
-        <input type="submit" value="Login">
-    </form>
+                <div class="d-flex justify-content-between align-items-center">
+                    <button type="submit" class="btn btn-primary mb-3">Login</button>
+                    <p class="mb-3 reset-pass"><a href="{% url 'reset_password' %}">Forgot your password?</a></p>
+                </div> 
+            </form>
+            <p class="mb-1">You don't have an account?</p>
+            <div class="signup-style">
+                <a href="{% url 'register' %}">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <p>You don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
 {% endif %}
-
-<p><a href="{% url 'reset_password' %}">Forgot your password?</a></p>
 
 {% endblock content %}
