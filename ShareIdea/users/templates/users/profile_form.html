@@ -4,16 +4,21 @@
 
 {% block content %}
 
-<h1>Edit account page</h1>
+<div class="container-lg mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-7 border border-3 rounded px-5 py-5 bg-light">
+            <form action="{% url 'edit-account' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+                {% for field in form %}
+                <label class="form-label">{{ field.label }}:</label>
+                {{ field }}
+                {% endfor %}
 
-    {{ form.as_p }}
-    
-    <input type="submit" value="Submit">
-
-</form>
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
-    
