@@ -26,9 +26,19 @@
                                     <li class="display-28"><span class="display-26 me-2 font-weight-400">Joined:</span> {{ profile.created | date:"d M Y"}}</li>
                                 </ul>
                                 <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+                                    
+                                    {% if profile.git_link %}
                                     <li><a href="{{ profile.git_link }}"><img src="{% static 'images/profiles/git.png' %}" alt="git" width="30px" height="30px"></a></li>
+                                    {% endif %}
+
+                                    {% if profile.linkedin_link %}
                                     <li><a href="{{ profile.linkedin_link }}"><img src="{% static 'images/profiles/linkedin.png' %}" alt="linkedin" width="30px" height="30px"></a></li>
+                                    {% endif %}
+
+                                    {% if profile.twitter_link %}
                                     <li><a href="{{ profile.twitter_link }}"><img src="{% static 'images/profiles/twitter.png' %}" alt="twitter" width="30px" height="30px"></a></li>
+                                    {% endif %}
+
                                 </ul>
                                 <button type="button" class="btn btn-outline-primary">
                                     <a href="{% url 'edit-account' %}">Edit Profile</a>
