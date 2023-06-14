@@ -12,12 +12,18 @@ class IdeaForm(ModelForm):
             'description',
             'image',
             'idea_link',
-            'tags'
+            # 'tags'
         ]
 
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple()
-        }
+        # widgets = {
+        #     'tags': forms.CheckboxSelectMultiple()
+        # }
+
+    def __init__(self, *args, **kwargs):
+        super(IdeaForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'form-control mb-3'})
 
 
 class ReviewForm(ModelForm):
