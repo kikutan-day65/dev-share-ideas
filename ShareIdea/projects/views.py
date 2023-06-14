@@ -106,7 +106,7 @@ def delete_idea(request, pk):
 
     if request.method == 'POST':
         idea.delete()
-        return redirect('ideas')
+        return redirect('account')
 
     context = {
         'deleteObj': idea
