@@ -3,15 +3,30 @@
 
 {% block content %}
 
-<h3>Password reset</h3>
-<p>Forgotten your password? Enter Your email address below</p>
+<div class="container-lg mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-7 border border-3 rounded px-5 py-5 bg-light">
+            <h3>Password reset</h3>
+            <p>Forgotten your password? Enter a new password below.</p>
 
-<form action="" method="POST">
-    {% csrf_token %}
+            <form action="" method="POST">
+                {% csrf_token %}
 
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
+                <div class="mb-3">
+                    <label for="id_new_password1" class="form-label">New password</label>
+                    <input type="password" class="form-control" id="id_new_password1" name="new_password1" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_new_password2" class="form-label">Confirm new password</label>
+                    <input type="password" class="form-control" id="id_new_password2" name="new_password2" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 {% endblock content %}
-    
