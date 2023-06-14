@@ -5,7 +5,7 @@ from users.models import Profile
 import uuid
 
 class Idea(models.Model):
-    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True, default="idea-default.jpg")
