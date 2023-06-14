@@ -377,7 +377,6 @@ section {
 }
 
 .message__author {
-    font-weight: bold;
     text-decoration: none;
     color: #333;
 }
