@@ -3,13 +3,24 @@
 
 {% block content %}
 
-<form action="" method="POST">
-    {% csrf_token %}
+<div class="container-lg mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-7 border border-3 rounded px-5 py-5 bg-light">
+            <form action="" method="POST">
+                {% csrf_token %}
 
-    <p>Are you sure you want to delete "{{ deleteObj }}"</p>
+                <div class="mb-3">
+                    <p>Are you sure you want to delete "{{ deleteObj }}"?</p>
+                </div>
 
-    <input type="submit" value="Confirm">
-</form>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 {% endblock content %}
     
