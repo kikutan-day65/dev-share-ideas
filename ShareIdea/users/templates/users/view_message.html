@@ -7,7 +7,14 @@
     <div class="content-box">
         <div class="message">
             <h2 class="message__subject">{{ message.subject }}</h4>
-                <a href="{% url 'profile-detail' message.sender.id %}" class="message__author">{{ message.sender }}</a>
+
+                
+                {% if message.sender %}
+                    <a href="{% url 'profile-detail' message.sender.id %}" class="message__author">{{ message.sender }}</a>
+                {% else %}
+                    <p>{{ message.name }}</p>
+                {% endif %}
+                    
                 <p class="message__date">{{ message.created }}</p>
                 <div class="message__body">
                     {{ message.body | linebreaksbr }}
