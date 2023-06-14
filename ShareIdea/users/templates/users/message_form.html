@@ -12,5 +12,35 @@
 
     <input type="submit" value="Submit">
 </form>
+
+
+
+
+<div class="container-lg mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-7 border border-3 rounded px-5 py-5 bg-light">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                {% if request.user.is_authenticated == False %}
+                    <label for="exampleFormControlInput1" class="form-label">Name:</label>
+                    <input type="text" name="name" class="form-control mb-3" id="exampleFormControlInput1">
+
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="text" name="email" class="form-control mb-3" id="exampleFormControlInput1">
+                {% endif %}
+
+                <label for="exampleFormControlInput1" class="form-label">Subject:</label>
+                <input type="text" name="subject" class="form-control mb-3" id="exampleFormControlInput1">
+
+                <label for="exampleFormControlTextarea1" class="form-label">body</label>
+                <textarea class="form-control mb-3 " name="body" id="exampleFormControlTextarea1" rows="6"></textarea>
+
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}
     
