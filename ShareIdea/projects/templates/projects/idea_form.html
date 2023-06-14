@@ -4,18 +4,26 @@
 
 {% block content %}
 
-<h1>Add idea</h1>
+<div class="container-lg mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-7 border border-3 rounded px-5 py-5 bg-light">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+                {% for field in form %}
+                
+                <label class="form-label">{{ field.label }}:</label>
+                {{ field }}
+            
+                {% endfor %}
 
-    {{ form.as_p }}
+                <label for="exampleFormControlTextarea1" class="form-label">Add tags</label>
+                <textarea class="form-control mb-3" name="new_tags" id="exampleFormControlTextarea1" rows="3"></textarea>
 
-    <textarea name="new_tags" placeholder="Add new tags"></textarea>
-
-    <input type="submit" value="Submit">
-</form>
-
-<!-- <p><a href="{% url 'create-tag' %}">Add new tag</a></p> -->
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
