@@ -60,7 +60,7 @@
                                             {{ skill.name }}
                                         </td>
                                         <td class="skill-description">
-                                            {{ skill.description }}
+                                            {{ skill.description | linebreaksbr }}
                                         </td>
                                     </tr>
                                     {% endfor %}
@@ -84,7 +84,7 @@
                                         
                                         {% if idea.description %}
                                         <td class="idea-description">
-                                            {{ idea.description }}
+                                            {{ idea.description | linebreaksbr }}
                                         </td>
                                         {% else %}
                                         <td>
