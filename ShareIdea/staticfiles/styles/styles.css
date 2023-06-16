@@ -1,14 +1,416 @@
-ul {
+body {
+    background-color: ivory !important;
+}
+
+body a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* Navbar styling */
+.navbar {
+    font-size: 20px;
+    background-color: #321e3a;
+    height: 80px;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-link {
+    margin-right: 5px;
+}
+
+.navbar-nav li.nav-item a.nav-link {
+    color: #F4F5F7;
+}
+
+.navbar-nav .nav-link:hover {
+    color:  #fff !important;
+    opacity: 0.7;
+}
+
+.navbar-toggler {
+    background-color: #F4F5F7 !important;
+}
+
+.navbar-collapse.collapse.show .navbar-nav {
+    background-color: #321e3a;  /* ドロップダウンの背景色を設定 */
+}
+
+.navbar-collapse.collapse.show .navbar-nav .nav-link {
+    color: #F4F5F7;  /* ドロップダウン内の文字色を設定 */
     text-align: center;
 }
 
-li {
-    list-style: none;
-    display: inline;
-    font-size: 20px;
-    padding: 3px;
+
+/* Search form */
+.search-form .btn {
+    color: #F4F5F7;
+    background-color: #321e3a;
+    height: 47px;
 }
 
-td {
-    padding: 5px;
+
+/* Ideas page styling */
+
+.card-title {
+    text-align: center;
+}
+
+.tag-list {
+    display: inline-block;  /* タグを横に並べる */
+    margin-right: 4px;  /* タグ間のスペース */
+    margin-bottom: 4px;  /* タグの下マージン */
+}
+
+.pill {
+    font-size: 13px;
+    background-color: #321e3a;
+    border: none;
+    color: #F4F5F7;
+    padding: 1px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 100px;
+  }
+
+.user-favs span {
+    font-weight: bold;
+ }
+
+ .date span {
+    font-weight: bold;
+ }
+
+ .author-name {
+    text-align: right;
+    font-weight: bold;
+    color: darkcyan;
+ }
+
+
+ /* Users page styling */
+ .user-info span {
+    font-weight: bold;
+ }
+
+ .headline {
+    font-style: italic;
+    color: darkcyan;
+    text-align: center;
+    font-weight: bold;
+ }
+
+
+/* Profile detail page styling */
+.container h3 {
+    color: #F4F5F7;
+}
+
+.social-icon-style1 li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-section {
+    background-color: inherit;
+}
+
+.container span {
+    color: #321e3a;
+    font-size: 20px;
+}
+
+.idea-title {
+    width: 250px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.skill-name {
+    text-align: center;
+    font-weight: bold;
+}
+
+body{margin-top:20px;}
+.card-style1 {
+    box-shadow: 0px 0px 10px 0px rgb(89 75 128 / 9%);
+}
+
+.border-0 {
+    border: 0!important;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #F4F5F7;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+section {
+    padding: 120px 0;
+    overflow: hidden;
+    background: #F4F5F7;
+}
+.mb-2-3, .my-2-3 {
+    margin-bottom: 2.3rem;
+}
+
+.section-title {
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.display-26 {
+    font-size: 1.3rem;
+}
+
+@media screen and (min-width: 992px){
+    .p-lg-7 {
+        padding: 4rem;
+    }
+}
+@media screen and (min-width: 768px){
+    .p-md-6 {
+        padding: 3.5rem;
+    }
+}
+@media screen and (min-width: 576px){
+    .p-sm-2-3 {
+        padding: 2.3rem;
+    }
+}
+.p-1-9 {
+    padding: 1.9rem;
+}
+
+.bg-custom {
+    background-color: #321e3a;
+}
+
+@media screen and (min-width: 576px){
+    .pe-sm-6, .px-sm-6 {
+        padding-right: 3.5rem;
+    }
+}
+@media screen and (min-width: 576px){
+    .ps-sm-6, .px-sm-6 {
+        padding-left: 3.5rem;
+    }
+}
+.pe-1-9, .px-1-9 {
+    padding-right: 1.9rem;
+}
+.ps-1-9, .px-1-9 {
+    padding-left: 1.9rem;
+}
+.pb-1-9, .py-1-9 {
+    padding-bottom: 1.9rem;
+}
+.pt-1-9, .py-1-9 {
+    padding-top: 1.9rem;
+}
+.mb-1-9, .my-1-9 {
+    margin-bottom: 1.9rem;
+}
+@media (min-width: 992px){
+    .d-lg-inline-block {
+        display: inline-block!important;
+    }
+}
+.rounded {
+    border-radius: 0.25rem!important;
+}
+
+
+/* idea detail page */
+.idea-detail h3 {
+    color: #321e3a;
+}
+
+.idea-detail img {
+    max-width: 100%;
+    height: auto;
+  }
+
+.container {
+    margin-top: 30px;
+}
+
+.detail-contents h3 {
+    color: #321e3a;
+}
+
+.review {
+    margin-bottom: 10px;
+}
+
+.review-owner {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.review-body {
+    margin-bottom: 0;
+    padding-left: 30px;
+}
+
+.caution {
+    font-weight: bold;
+    color: silver;
+}
+
+.tag-list {
+    margin-bottom: 5px; /* タグの下部のマージンを調整 */
+}
+
+.fav-info {
+    margin-top: 20px; /* fav-infoの上部のマージンを調整 */
+}
+
+.idea-link {
+    margin-top: 20px;
+}
+
+
+/* Message box styling */
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    padding: 20px;
+}
+
+.message-box {
+    width: 80%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.message-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.message-box li {
+    margin-bottom: 10px;
+}
+
+.message-box a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.message-box a:hover {
+    background-color: #eaf0ff;
+}
+
+.message-box .message__author {
+    font-style: italic;
+}
+
+.message-box .message__subject {
+    display: block;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.message-box .message__date {
+    color: #999;
+    font-size: 12px;
+}
+
+.unread-message {
+    font-weight: bold;
+}
+
+
+/* view message page */
+.messagePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.content-box {
+    width: 80%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    margin-bottom: 20px;
+}
+
+.messagePage .message__subject {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.message__author {
+    text-decoration: none;
+    color: #333;
+}
+
+.message__author:hover {
+    text-decoration: underline;
+}
+
+.message__date {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.message__body {
+    margin-top: 10px;
+}
+
+
+/* login form */
+.signup-style {
+    font-weight: bold;
+    color: #321e3a;
+}
+
+.signup-style a:hover {
+    opacity: 0.7;
+}
+
+.reset-pass {
+    text-decoration: underline;
+    color: #321e3a;
+}
+
+.reset-pass:hover {
+    opacity: 0.7;
 }
