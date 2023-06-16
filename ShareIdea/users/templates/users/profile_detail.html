@@ -12,7 +12,7 @@
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
                             <div class="col-lg-6 mb-4 mb-lg-0">
-                                <img src="{{ detail.user_image.url }}" alt="..." width="100%" height="auto">
+                                <img src="{{ detail.image_url }}" alt="..." width="100%" height="auto">
                             </div>
                             <div class="col-lg-6 px-xl-10">
                                 <div class="bg-custom d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
@@ -75,7 +75,7 @@
                                     {% for idea in detail.idea_set.all %}
                                     <tr class="idea-row">
                                         <td class="idea-image">
-                                            <a href="{% url 'idea-detail' idea.id %}"><img src="{{ idea.image.url }}" alt="profile image" width="200px" height="auto"></a>
+                                            <a href="{% url 'idea-detail' idea.id %}"><img src="{{ idea.image_url }}" alt="profile image" width="200px" height="auto"></a>
                                         </td>
                                         <td class="idea-title">
                                             <a href="{% url 'idea-detail' idea.id %}">{{ idea.title }}</a>

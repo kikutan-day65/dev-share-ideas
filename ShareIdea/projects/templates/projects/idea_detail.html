@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="col-md-6 idea-detail">
-            <img src="{{ detail.image.url }}" alt="idea-image">
+            <img src="{{ detail.image_url }}" alt="idea-image">
             <h2>{{ detail.title }}</h2>
             <div class="owner-name">
                 By <a href="{% url 'profile-detail' detail.owner.id %}">{{ detail.owner.name }}</a>
