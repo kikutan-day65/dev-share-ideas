@@ -75,7 +75,7 @@
                                     {% for idea in detail.idea_set.all %}
                                     <tr class="idea-row">
                                         <td class="idea-image">
-                                            <a href="{% url 'idea-detail' idea.id %}"><img src="{{ idea.image.url }}" alt="" width="200px" height="auto"></a>
+                                            <a href="{% url 'idea-detail' idea.id %}"><img src="{{ idea.image.url }}" alt="profile image" width="200px" height="auto"></a>
                                         </td>
                                         <td class="idea-title">
                                             <a href="{% url 'idea-detail' idea.id %}">{{ idea.title }}</a>
