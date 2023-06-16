@@ -94,7 +94,8 @@ def edit_idea(request, pk):
             return redirect('ideas')
     
     context = {
-        'form': form
+        'form': form,
+        'idea': idea
     }
 
     return render(request, 'projects/idea_form.html', context)
