@@ -18,6 +18,12 @@
                 {% endfor %}
 
                 <label for="exampleFormControlTextarea1" class="form-label">Add tags</label>
+                <br>
+                {% for tag in idea.tags.all  %}
+                    <div class="tag-list">
+                        <div class="pill">{{ tag.name }}</div>
+                    </div> 
+                {% endfor %}
                 <textarea class="form-control mb-3" name="new_tags" id="exampleFormControlTextarea1" rows="3"></textarea>
 
                 <button type="submit" class="btn btn-primary mb-3">Submit</button>
