@@ -23,6 +23,15 @@ class Idea(models.Model):
     )
 
     @property
+    def image_url(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+
+        return url
+
+    @property
     def reviewers(self):
         queryset = self.review_set.all().values_list('owner_id', flat=True)
         return queryset
